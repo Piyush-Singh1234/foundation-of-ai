@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSP Solver Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h1>🧩 Constraint Satisfaction Problem Solver</h1>
+            <p>Interactive visualization of CSP solving with Arc Consistency and Backtracking</p>
+        </div>
+
+        <div class="workspace">
+            <div class="controls-panel">
+                <h3>⚙️ Configuration</h3>
+                
+                <div class="control-group">
+                    <label>Puzzle Difficulty</label>
+                    <select id="difficultySelector">
+                        <option value="">Select Difficulty</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                        <option value="expert">Expert</option>
+                        <option value="extreme">Extreme</option>
+                    </select>
+                </div>
+
+                <button class="control-btn" onclick="initializeCustomPuzzle()">🎨 Create Custom</button>
+                
+                <div class="control-group">
+                    <label>Solving Strategy</label>
+                    <select id="strategySelector">
+                        <option value="ac3">AC-3 (Arc Consistency)</option>
+                        <option value="backtrack">Backtracking</option>
+                        <option value="hybrid">Hybrid (AC-3 + BT)</option>
+                    </select>
+                </div>
+
+                <button class="control-btn secondary" onclick="executeSolver()">▶️ Execute Solver</button>
+                <button class="control-btn tertiary" onclick="resetPuzzle()">🔄 Reset Puzzle</button>
+
+                <div class="control-group">
+                    <label>Animation Speed</label>
+                    <div class="speed-control">
+                        <span>🐢</span>
+                        <input type="range" class="speed-slider" id="speedControl" min="50" max="1000" value="500">
+                        <span>🐇</span>
+                    </div>
+                </div>
+
+                <button class="control-btn" onclick="clearSelectedCell()">🗑️ Clear Selected</button>
+            </div>
+
+            <div class="grid-container">
+                <div class="puzzle-grid" id="puzzleGrid"></div>
+            </div>
+
+            <div class="info-panel">
+                <h3>📊 Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="stepCount">0</div>
+                        <div class="stat-label">Steps Taken</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="cellsFilled">0</div>
+                        <div class="stat-label">Cells Filled</div>
+                    </div>
+                </div>
+
+                <div class="domain-viewer" id="domainViewer">
+                    <h4>📋 Domain for Selected Cell</h4>
+                    <div class="domain-values" id="domainValues">
+                        <span style="color: #999;">Select a cell to view possible values</span>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 20px;">📝 Activity Log</h3>
+                <div class="activity-log" id="activityLog"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
